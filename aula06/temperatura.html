@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define o conjunto de caracteres do documento -->
+    <meta charset="UTF-8">
+    <!-- Ajusta a página para telas menores -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página exibido no navegador -->
+    <title>Temperatura | Lógica com JS</title>
+    <!-- Conecta o arquivo HTML ao CSS da página -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Conteúdo principal do conversor -->
+    <main class="exercicio">
+        <!-- Título do exercício -->
+        <h1>Conversor de Temperatura</h1>
+
+        <!-- Campo para entrada da temperatura em Celsius -->
+        <label for="celsius">Celsius</label>
+        <input type="number" id="celsius" step="0.1">
+
+        <!-- Botão para iniciar a conversão -->
+        <button id="converter">Converter</button>
+
+        <!-- Local onde a resposta será exibida -->
+        <p id="resultado" class="resultado">O resultado aparece aqui!</p>
+    </main>
+
+    <!-- Importa o JavaScript responsável pelo cálculo -->
+    <script src="./js/temperatura.js"></script>
+</body>
+</html>

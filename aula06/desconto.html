@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <!-- Define o conjunto de caracteres do documento -->
+    <meta charset="UTF-8">
+    <!-- Ajusta a página para dispositivos móveis -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título da página exibido na aba do navegador -->
+    <title>Calcular Desconto</title>
+    <!-- Conecta a página com o arquivo de estilo CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Conteúdo principal da página -->
+    <main class="exercicio">
+        <!-- Título do exercício -->
+        <h1>Calcular Desconto</h1>
+
+        <!-- Campo para digitar o preço -->
+        <label for="preco">Preço:</label>
+        <input type="number" id="preco" step="0.01">
+
+        <!-- Campo para digitar o percentual de desconto -->
+        <label for="desconto">Desconto (%):</label>
+        <input type="number" id="desconto" step="0.01">
+
+        <!-- Botão que aciona o cálculo -->
+        <button id="calcular">Calcular</button>
+
+        <!-- Local onde o resultado será exibido -->
+        <p id="resultado" class="resultado">O resultado aparece aqui!</p>
+    </main>
+
+    <!-- Importa o script JavaScript responsável pela lógica do cálculo -->
+    <script src="./js/desconto.js"></script>
+</body>
+</html>
