@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador - Academia Movimente-se</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header class="topo">
+        <a href="index-academia.html" class="logo">Academia Movimente-se</a>
+
+        <nav>
+            <ul class="menu">
+                <li><a href="index-academia.html">Início</a></li>
+                <li><a href="index-academia.html#matricula">Matrícula</a></li>
+                <li><a href="index-academia.html#planos">Planos</a></li>
+                <li><a href="index-academia.html#horarios">Horários</a></li>
+                <li><a href="simulador.html" class="ativo">Simulador</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section>
+            <h1>Simulador da Academia</h1>
+
+            <h2>Desafio 1 - Quanto Vou Pagar?</h2>
+
+            <label for="meses1">Quantidade de meses</label>
+            <input type="number" id="meses1" min="1">
+
+            <button id="calcular1" class="botao">Calcular</button>
+
+            <p id="resultado1" class="resultado">
+                O resultado aparece aqui.
+            </p>
+        </section>
+
+
+        <section>
+
+            <h2>Desafio 2 - Gasto Calórico</h2>
+
+            <label for="peso">Peso (kg)</label>
+            <input type="number" id="peso" step="0.1">
+
+            <label for="minutos">Minutos de treino</label>
+            <input type="number" id="minutos">
+
+            <button id="calcular2" class="botao">Calcular</button>
+
+            <p id="resultado2" class="resultado">
+                O resultado aparece aqui.
+            </p>
+        </section>
+
+
+        <section>
+
+            <h2>Desafio 3 - Matrícula à Vista</h2>
+
+            <label for="meses3">Quantidade de meses</label>
+            <input type="number" id="meses3" min="1">
+
+            <button id="calcular3" class="botao">Calcular</button>
+
+            <p id="resultado3" class="resultado">
+                O resultado aparece aqui.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="rodape">
+        <p>Academia Movimente-se © 2026</p>
+    </footer>
+
+    <script src="js/simulador.js"></script>
+
+</body>
+</html>

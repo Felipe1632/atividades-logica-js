@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcular Custo da Viagem</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <main class="exercicio">
+        <h1>Custo da Viagem</h1>
+
+        <label for="distancia">Distância:</label>
+        <input type="number" id="distancia" step="0.01">
+
+        <label for="consumo">Consumo do Carro(Km por litro):</label>
+        <input type="number" id="consumo" step="0.01">
+
+        <label for="preco">Preço por Litro:</label>
+        <input type="number" id="preco" step="0.01">
+
+        <button id="calcular">Calcular</button>
+
+        <p id="resultado" class="resultado">O resultado aparece aqui!</p>
+    </main>
+    <script src="./js/viagem.js"></script>
+</body>
+</html>
+<!--Aparece Infinity quando coloco 0 em Consumo.-->

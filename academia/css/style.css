@@ -1,0 +1,348 @@
+/* Demo da aula 5: acabamento, estados e animações.
+   Solução de referência dos módulos 2 a 6 da lista, em um portfólio enxuto. */
+
+/* ===== 1. Variáveis ===== */
+:root {
+    --cor-fundo: #FFFFFF;
+    --cor-texto: #1E2A38;
+    --cor-destaque: #E07A2E;
+    --cor-borda: #D9DDD3;
+    --cor-suave: #F4F5EF;
+  }
+  
+  /* ===== 2. Base ===== */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--cor-texto);
+    background: var(--cor-fundo);
+  }
+  
+  h1 { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.15; }
+  
+  img { max-width: 100%; height: auto; }
+  
+  main section {
+    padding: 3rem 1.25rem;
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  
+  /* ===== 3. Layout ===== */
+  .topo {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem 1.5rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, var(--cor-texto), #3A5068);   /* 3.3 degradê */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .logo {
+    color: var(--cor-fundo);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  
+  .sobre {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+    animation: surgir 0.6s ease-out;                                     /* 4.1 entrada */
+  }
+  
+  .rodape {
+    padding: 2rem 1.25rem;
+    text-align: center;
+    background: var(--cor-suave);
+  }
+  
+  /* ===== 4. Componentes ===== */
+  
+  /* Menu: separador (2.2) e sublinhado que cresce (2.3) */
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .menu li:not(:last-child) {
+    padding-right: 1rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .menu a {
+    position: relative;
+    color: var(--cor-fundo);
+    text-decoration: none;
+  }
+  
+  .menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--cor-destaque);
+    transition: width 0.3s;
+  }
+  
+  .menu a:hover::after,
+  .menu a:focus-visible::after,
+  .menu a.ativo::after {
+    width: 100%;
+  }
+  
+  /* Lista com ícone (2.4) */
+  .lista-check {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .lista-check li::before {
+    content: "✓ ";
+    color: var(--cor-destaque);
+    font-weight: 700;
+  }
+  
+  /* Foto redonda sem distorção (3.4) */
+  .perfil img {
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  }
+  
+  /* Botões com retorno (3.2) */
+  .botao {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: var(--cor-destaque);
+    color: var(--cor-fundo);
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  
+  .botao:hover {
+    background: var(--cor-texto);
+  }
+  
+  .botao:focus-visible {
+    outline: 3px solid var(--cor-destaque);
+    outline-offset: 3px;
+  }
+  
+  .botao:active {
+    transform: scale(0.95);
+  }
+  
+  /* Cards que levantam (3.1) */
+  .projetos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .card {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 12px;
+    background: var(--cor-fundo);
+    border: 1px solid var(--cor-borda);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+  
+  .selo {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 0.125rem 0.625rem;
+    border-radius: 999px;
+    background: var(--cor-destaque);
+    color: var(--cor-fundo);
+    font-size: 0.8rem;
+    font-weight: 700;
+    animation: pulsar 1.5s ease-in-out infinite;                       /* 4.2 */
+  }
+  
+  /* Tabela zebrada (2.1) */
+  .tabela {
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse;
+  }
+  
+  .tabela caption {
+    text-align: left;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  
+  .tabela th,
+  .tabela td {
+    padding: 0.75rem;
+    text-align: left;
+  }
+  
+  .tabela thead {
+    background: var(--cor-texto);
+    color: var(--cor-fundo);
+  }
+  
+  .tabela tbody tr:nth-child(even) {
+    background: var(--cor-suave);
+  }
+  
+  /* Formulário */
+  .formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 420px;
+  }
+  
+  .formulario input {
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid var(--cor-borda);
+    border-radius: 8px;
+    font: inherit;
+  }
+  
+  .formulario input::placeholder {
+    color: #8A9AA8;
+  }
+  
+  /* Área de resultado (5.1) */
+  .resultado,
+  .ok,
+  .alerta,
+  .erro {
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 6px solid var(--cor-texto);
+    background: var(--cor-suave);
+  }
+  
+  /* Spinner (bônus do guia; volta na aula 15) */
+  .carregando {
+    width: 32px;
+    aspect-ratio: 1;
+    border: 4px solid var(--cor-suave);
+    border-top-color: var(--cor-destaque);
+    border-radius: 50%;
+    animation: girar 0.8s linear infinite;
+  }
+  
+  /* ===== 5. Estados e temas ===== */
+  .ok     { border-color: #2E7D32; background: #E8F5E9; }
+  .alerta { border-color: #F9A825; background: #FFF8E1; }
+  .erro   { border-color: #C62828; background: #FFEBEE; }
+  
+  /* Campo com erro (5.2) */
+  .mensagem-erro {
+    display: none;
+    color: #C62828;
+  }
+  
+  .formulario .campo-erro {
+    border-color: #C62828;   /* mais específico que .formulario input */
+  }
+  
+  .campo-erro + .mensagem-erro {
+    display: block;
+  }
+  
+  /* Plano esgotado (desafio 3 da Academia) */
+  .esgotado {
+    filter: grayscale(1);
+    opacity: 0.6;
+  }
+  
+  .esgotado::after {
+    content: "Esgotado";
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.6);
+    font-weight: 700;
+    font-size: 1.25rem;
+  }
+  
+  /* Tema escuro por classe (5.3): só as variáveis mudam */
+  body.tema-escuro {
+    --cor-fundo: #121821;
+    --cor-texto: #E8ECE4;
+    --cor-borda: #2E3B4A;
+    --cor-suave: #1C2530;
+  }
+  
+  /* ===== 6. Animações ===== */
+  @keyframes surgir {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulsar {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.1); }
+  }
+  
+  @keyframes girar {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* ===== 7. Media queries ===== */
+  @media (min-width: 768px) {
+    .sobre {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+  
