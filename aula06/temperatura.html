@@ -13,21 +13,26 @@
 <body>
     <!-- Conteúdo principal do conversor -->
     <main class="exercicio">
-        <!-- Título do exercício -->
         <h1>Conversor de Temperatura</h1>
 
-        <!-- Campo para entrada da temperatura em Celsius -->
-        <label for="celsius">Celsius</label>
-        <input type="number" id="celsius" step="0.1">
+        <!-- Escolha do tipo de conversão -->
+        <label for="tipo">Converter de:</label>
+        <select id="tipo">
+            <option value="cParaF">Celsius para Fahrenheit</option>
+            <option value="fParaC">Fahrenheit para Celsius</option>
+        </select>
 
-        <!-- Botão para iniciar a conversão -->
+        <!-- Campo de entrada do valor -->
+        <label for="temp">Temperatura:</label>
+        <input type="number" id="temp" step="0.1">
+
         <button id="converter">Converter</button>
 
-        <!-- Local onde a resposta será exibida -->
         <p id="resultado" class="resultado">O resultado aparece aqui!</p>
     </main>
 
     <!-- Importa o JavaScript responsável pelo cálculo -->
+    <script src="./../aula10/js/comum.js"></script>
     <script src="./js/temperatura.js"></script>
 </body>
 </html>

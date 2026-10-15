@@ -10,13 +10,10 @@ const saida = document.querySelector("#resultado");
 // Quando o botão for clicado, executa o código abaixo
 botao.onclick = () => {
 
-    const num = Number(document.querySelector("#num").value);
-
-    if (num % 2 === 0) {
-        saida.textContent = "O número " + num + " é Par"
-        saida.className = "ok"
-      } else {
-        saida.textContent = "O número " + num + " é Ímpar"
-        saida.className = "alerta"
-      }
+    const numero = Number(document.querySelector("#num").value);
+  if(hePar(numero)){
+    mostrar(`${numero} é par`, "ok");
+  } else {
+    mostrar(`${numero} é ímpar`, "alerta");
+  }
 };

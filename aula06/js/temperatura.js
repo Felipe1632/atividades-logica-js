@@ -1,19 +1,25 @@
-// Aula 06 - Exercício 3.2
-// Convertendo graus Celsius para Fahrenheit
-
-// Busca o botão de converter na página
+const selectTipo = document.querySelector("#tipo");
+const campoTemp = document.querySelector("#temp");
 const converter = document.querySelector("#converter");
-// Busca o elemento onde o resultado será exibido
 const resultado = document.querySelector("#resultado");
 
-// Quando o botão for clicado, executa o código abaixo
 converter.onclick = () => {
-    // Pega a temperatura em Celsius digitada pelo usuário e converte para número
-    const celsius = Number(document.querySelector("#celsius").value);
+    if (campoTemp.value === "") {
+        resultado.textContent = "Digite um valor de temperatura!";
+        resultado.className = "erro";
+        return;
+    }
 
-    // Calcula a temperatura em Fahrenheit
-    const f = celsius * 9 / 5 + 32;
+    const valor = Number(campoTemp.value);
+    const tipo = selectTipo.value;
 
-    // Mostra o resultado na tela
-    resultado.textContent = "Fahrenheit: " + f.toFixed(1);
+    if (tipo === "cParaF") {
+        const f = celsiusParaFahrenheit(valor);
+        resultado.textContent = `${valor} °C = ${f.toFixed(1)} °F`;
+    } else {
+        const c = fahrenheitParaCelsius(valor);
+        resultado.textContent = `${valor} °F = ${c.toFixed(1)} °C`;
+    }
+
+    resultado.className = "ok";
 };
